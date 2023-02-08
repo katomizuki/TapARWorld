@@ -95,22 +95,18 @@ final class CustomARView: ARView {
         scene.subscribe(to: SceneEvents.Update.self) { [weak self] event in
             guard let self = self else { return }
             guard let fingerStatus = self.fingerStatus else { return }
-            guard let indexTipPoint = fingerStatus.indexTip?.location else { return }
-            let normalizedPoint = VNImagePointForNormalizedPoint(indexTipPoint,
+            guard let normalizedLocation = fingerStatus.indexTip?.location else { return }
+            let normalizedPoint = VNImagePointForNormalizedPoint(normalizedLocation,
                                                                  Int(screenSize.width),
                                                                  Int(screenSize.height))
-//            if let soadGeometry = self.entity(at: normalizedPoint) as? ModelEntity {
-//                if let query = self.makeRaycastQuery(from: normalizedPoint,
-//                                 allowing: .existingPlaneInfinite,
-//                                                     alignment: .any) {
-//                    let result = self.session.raycast(query)
-//                    if let worldTransform = result.first?.worldTransform {
-//                        soadGeometry.transform = Transform(matrix: worldTransform)
-//                    }
-//                }
-//            } else {
-//                return
-//            }
+           // 行っていることはこれと同じprint(CGPoint(x: normalizedLocation.x * screenSize.width,
+             //             y: normalizedPoint.y * screenSize.height))
+            
+            if let soadGeometry = self.entity(at: normalizedPoint) as? ModelEntity {
+                
+            } else {
+                return
+            }
         }.store(in: &self.anyCancellabls)
     }
     

@@ -8,6 +8,7 @@
 import SwiftUI
 import ARKit
 
+// 現実のものをタップしたら。。何かする
 struct ARViewContainer: UIViewRepresentable {
     typealias UIViewType = CustomARView
     
