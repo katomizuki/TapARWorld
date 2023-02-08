@@ -99,19 +99,18 @@ final class CustomARView: ARView {
             let normalizedPoint = VNImagePointForNormalizedPoint(indexTipPoint,
                                                                  Int(screenSize.width),
                                                                  Int(screenSize.height))
-            if let soadGeometry = self.entity(at: normalizedPoint)?.parent as? SoadGeometry {
-                if let query = self.makeRaycastQuery(from: normalizedPoint,
-                                 allowing: .existingPlaneInfinite,
-                                                     alignment: .any) {
-                    let result = self.session.raycast(query)
-                    if let worldTransform = result.first?.worldTransform,
-                       let entity = event.scene.anchors.first(where: { $0.name == "soad" }) {
-                        soadGeometry.update(worldTransform: worldTransform)
-                    }
-                }
-            } else {
-                return
-            }
+//            if let soadGeometry = self.entity(at: normalizedPoint) as? ModelEntity {
+//                if let query = self.makeRaycastQuery(from: normalizedPoint,
+//                                 allowing: .existingPlaneInfinite,
+//                                                     alignment: .any) {
+//                    let result = self.session.raycast(query)
+//                    if let worldTransform = result.first?.worldTransform {
+//                        soadGeometry.transform = Transform(matrix: worldTransform)
+//                    }
+//                }
+//            } else {
+//                return
+//            }
         }.store(in: &self.anyCancellabls)
     }
     
