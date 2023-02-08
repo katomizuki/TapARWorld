@@ -9,6 +9,7 @@ import RealityKit
 import Vision
 import ARKit
 import Combine
+import RealityGeometries
 
 final class CustomARView: ARView {
     
@@ -29,18 +30,15 @@ final class CustomARView: ARView {
     private func setupBox() {
         let anchor = AnchorEntity()
         anchor.position = simd_make_float3(0, -0.5, -1)
-        let box = ModelEntity(mesh: .generateBox(size: simd_make_float3(0.2, 0.2, 0.2),
-                                                 cornerRadius:  0.03))
-        box.generateCollisionShapes(recursive: true)
-        box.physicsBody =  PhysicsBodyComponent(massProperties: .default, // 質量
+        let soad = SoadGeometry()
+        soad.generateCollisionShapes(recursive: true)
+        soad.physicsBody =  PhysicsBodyComponent(massProperties: .default, // 質量
                                                 material: .generate(friction: 0.1, // 摩擦係数
                                                                     restitution: 0.1), // 衝突の運動エネルギーの保存率
                                                 mode: .kinematic)
-        let simpleMaterial = SimpleMaterial(color: .purple, isMetallic: false)
-        box.model?.materials = [simpleMaterial]
-        box.transform = Transform(pitch: 0, yaw: 1, roll: 0)
-        anchor.addChild(box)
-        anchor.name = "box"
+        soad.transform = Transform(pitch: 0, yaw: 1, roll: 0)
+        anchor.addChild(soad)
+        anchor.name = "soad"
         scene.anchors.append(anchor)
     }
     
@@ -50,6 +48,7 @@ final class CustomARView: ARView {
     
     private func setupARConfig() {
         let config = ARWorldTrackingConfiguration()
+        config.planeDetection = [.horizontal,.vertical]
         session.run(config)
         session.delegate = self
     }
@@ -100,8 +99,18 @@ final class CustomARView: ARView {
             let normalizedPoint = VNImagePointForNormalizedPoint(indexTipPoint,
                                                                  Int(screenSize.width),
                                                                  Int(screenSize.height))
-            if let modelEntity = self.entity(at: normalizedPoint) as? ModelEntity {
-               
+            if let soadGeometry = self.entity(at: normalizedPoint)?.parent as? SoadGeometry {
+                if let query = self.makeRaycastQuery(from: normalizedPoint,
+                                 allowing: .existingPlaneInfinite,
+                                                     alignment: .any) {
+                    let result = self.session.raycast(query)
+                    if let worldTransform = result.first?.worldTransform,
+                       let entity = event.scene.anchors.first(where: { $0.name == "soad" }) {
+                        soadGeometry.update(worldTransform: worldTransform)
+                    }
+                }
+            } else {
+                return
             }
         }.store(in: &self.anyCancellabls)
     }
@@ -126,6 +135,12 @@ extension CustomARView: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         let pixelBuffer = frame.capturedImage
         self.executeHandTracking(pixelBuffer: pixelBuffer)
+        
+    }
+}
+
+extension CustomARView {
+    func addSoad() {
         
     }
 }

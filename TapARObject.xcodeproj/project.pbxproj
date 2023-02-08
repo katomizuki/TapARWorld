@@ -15,6 +15,10 @@
 		D3B2DFB7299268E50027AE43 /* FingerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFB6299268E50027AE43 /* FingerStatus.swift */; };
 		D3B2DFB9299269310027AE43 /* CustumARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFB8299269310027AE43 /* CustumARView.swift */; };
 		D3B2DFBB299269B30027AE43 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */; };
+		D3B2DFBD2993B8050027AE43 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFBC2993B8050027AE43 /* SoundManager.swift */; };
+		D3B2DFC02993B9970027AE43 /* MultipeerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D3B2DFBF2993B9970027AE43 /* MultipeerHelper */; };
+		D3B2DFC32993B9B00027AE43 /* RealityGeometries in Frameworks */ = {isa = PBXBuildFile; productRef = D3B2DFC22993B9B00027AE43 /* RealityGeometries */; };
+		D3B2DFC52993BA740027AE43 /* SoadEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFC42993BA740027AE43 /* SoadEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,8 @@
 		D3B2DFB6299268E50027AE43 /* FingerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerStatus.swift; sourceTree = "<group>"; };
 		D3B2DFB8299269310027AE43 /* CustumARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumARView.swift; sourceTree = "<group>"; };
 		D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		D3B2DFBC2993B8050027AE43 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D3B2DFC42993BA740027AE43 /* SoadEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoadEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B2DFC02993B9970027AE43 /* MultipeerHelper in Frameworks */,
+				D3B2DFC32993B9B00027AE43 /* RealityGeometries in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +72,8 @@
 				D3B2DFB6299268E50027AE43 /* FingerStatus.swift */,
 				D3B2DFB8299269310027AE43 /* CustumARView.swift */,
 				D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */,
+				D3B2DFBC2993B8050027AE43 /* SoundManager.swift */,
+				D3B2DFC42993BA740027AE43 /* SoadEntity.swift */,
 				D3B2DFAA299267BE0027AE43 /* Experience.rcproject */,
 				D3B2DFAC299267C00027AE43 /* Assets.xcassets */,
 				D3B2DFAE299267C00027AE43 /* Preview Content */,
@@ -95,6 +105,10 @@
 			dependencies = (
 			);
 			name = TapARObject;
+			packageProductDependencies = (
+				D3B2DFBF2993B9970027AE43 /* MultipeerHelper */,
+				D3B2DFC22993B9B00027AE43 /* RealityGeometries */,
+			);
 			productName = TapARObject;
 			productReference = D3B2DFA3299267BE0027AE43 /* TapARObject.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +137,10 @@
 				Base,
 			);
 			mainGroup = D3B2DF9A299267BE0027AE43;
+			packageReferences = (
+				D3B2DFBE2993B9970027AE43 /* XCRemoteSwiftPackageReference "MultipeerHelper" */,
+				D3B2DFC12993B9B00027AE43 /* XCRemoteSwiftPackageReference "RealityGeometries" */,
+			);
 			productRefGroup = D3B2DFA4299267BE0027AE43 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,7 +172,9 @@
 				D3B2DFA9299267BE0027AE43 /* ContentView.swift in Sources */,
 				D3B2DFA7299267BE0027AE43 /* AppDelegate.swift in Sources */,
 				D3B2DFAB299267BE0027AE43 /* Experience.rcproject in Sources */,
+				D3B2DFBD2993B8050027AE43 /* SoundManager.swift in Sources */,
 				D3B2DFBB299269B30027AE43 /* ARViewContainer.swift in Sources */,
+				D3B2DFC52993BA740027AE43 /* SoadEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +379,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3B2DFBE2993B9970027AE43 /* XCRemoteSwiftPackageReference "MultipeerHelper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/MultipeerHelper.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		D3B2DFC12993B9B00027AE43 /* XCRemoteSwiftPackageReference "RealityGeometries" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/RealityGeometries.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D3B2DFBF2993B9970027AE43 /* MultipeerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3B2DFBE2993B9970027AE43 /* XCRemoteSwiftPackageReference "MultipeerHelper" */;
+			productName = MultipeerHelper;
+		};
+		D3B2DFC22993B9B00027AE43 /* RealityGeometries */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3B2DFC12993B9B00027AE43 /* XCRemoteSwiftPackageReference "RealityGeometries" */;
+			productName = RealityGeometries;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D3B2DF9B299267BE0027AE43 /* Project object */;
 }
