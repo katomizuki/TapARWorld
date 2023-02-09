@@ -96,15 +96,19 @@ final class CustomARView: ARView {
         scene.subscribe(to: SceneEvents.Update.self) { [weak self] event in
             guard let self = self else { return }
             guard let fingerStatus = self.fingerStatus else { return }
-            guard let normalizedLocation = fingerStatus.indexTip?.location else { return }
+            // なんか知らんがLandScapeから見て左下が0.0
+            guard var normalizedLocation = fingerStatus.indexTip?.location else { return }
             // スクリーン空間
+            // Portraitで左下を0,0にする
+            normalizedLocation = CGPoint(x: normalizedLocation.y, y: normalizedLocation.x)
             let indexTipScreenLocation = VNImagePointForNormalizedPoint(normalizedLocation,
                                                                  Int(screenSize.width),
                                                                  Int(screenSize.height))
-            let cameraOffset = simd_make_float3(0, 0, 1)
+            let indexTipScreenLocationn = CGPoint(x: normalizedLocation.x * screenSize.width,
+                                                 y: normalizedLocation.y * screenSize.height)
+            let cameraOffset = simd_make_float3(0, 0, 0.99)
             let worldInPosition = self.cgPointToWorldspace(indexTipScreenLocation,
                                                            offsetFromCamera: cameraOffset)
-            print(worldInPosition,"✋")
             self.scene.anchors.first(where: { $0.name == "soad"})?.position = worldInPosition
         }.store(in: &self.anyCancellabls)
     }
@@ -143,13 +147,14 @@ extension CustomARView {
             var col1 = SIMD4<Float>(0, 1, 0, 0)
             var col2 = SIMD4<Float>(0, 0, 1, 0)
             var col3 = SIMD4<Float>(camForwardPoint.x, camForwardPoint.y, camForwardPoint.z, 1)
+            // カメラの平行移動を示した行列
             let planePosMatrix = float4x4(col0, col1, col2, col3)
-
             // カメラの回転行列
             let camRotMatrix = float4x4(cameraTransform.rotation)
 
             // Get rotation offset: Y-up is considered the plane's normal, so we
             // rotate the plane around its X-axis by 90 degrees.
+        // x軸方向に90ど回転させてるっぽい
             col0 = SIMD4<Float>(1, 0, 0, 0)
             col1 = SIMD4<Float>(0, 0, 1, 0)
             col2 = SIMD4<Float>(0, -1, 0, 0)
