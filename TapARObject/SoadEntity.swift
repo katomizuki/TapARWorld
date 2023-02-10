@@ -29,7 +29,7 @@ final class SoadGeometry: Entity, HasPhysicsBody {
                                             SCNMatrix4MakeRotation(-Float.pi / 2.0, 1, 0, 0),
                                             SCNMatrix4MakeTranslation(0, 0, 0.1 / 2)))
         if let worldTransform = worldTransform {
-            cylinder.transform = Transform(matrix: worldTransform)
+            cylinder.transform = Transform(matrix: worldTransform * rotationMatrix)
         }
     }
     

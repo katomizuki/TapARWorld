@@ -31,7 +31,7 @@ final class CustomARView: ARView {
         let anchor = AnchorEntity()
         anchor.position = simd_make_float3(0, -0.5, -1)
       
-        let soad = ModelEntity(mesh: MeshResource.generateBox(size: 0.5,cornerRadius: 0.1))
+        let soad = SoadGeometry()
         soad.generateCollisionShapes(recursive: true)
         soad.physicsBody =  PhysicsBodyComponent(massProperties: .default, // 質量
                                                 material: .generate(friction: 0.1, // 摩擦係数
@@ -96,7 +96,6 @@ final class CustomARView: ARView {
         scene.subscribe(to: SceneEvents.Update.self) { [weak self] event in
             guard let self = self else { return }
             guard let fingerStatus = self.fingerStatus else { return }
-            // なんか知らんがLandScapeから見て左下が0.0
             guard var normalizedLocation = fingerStatus.indexTip?.location else { return }
             // スクリーン空間
             // Portraitで左下を0,0にする
@@ -104,12 +103,11 @@ final class CustomARView: ARView {
             let indexTipScreenLocation = VNImagePointForNormalizedPoint(normalizedLocation,
                                                                  Int(screenSize.width),
                                                                  Int(screenSize.height))
-            let indexTipScreenLocationn = CGPoint(x: normalizedLocation.x * screenSize.width,
-                                                 y: normalizedLocation.y * screenSize.height)
             let cameraOffset = simd_make_float3(0, 0, 0.99)
             let worldInPosition = self.cgPointToWorldspace(indexTipScreenLocation,
                                                            offsetFromCamera: cameraOffset)
-            self.scene.anchors.first(where: { $0.name == "soad"})?.position = worldInPosition
+           let soadGeometry = self.scene.anchors.first(where: { $0.name == "soad"})?.parent as? SoadGeometry
+            
         }.store(in: &self.anyCancellabls)
     }
     
@@ -133,7 +131,6 @@ extension CustomARView: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         let pixelBuffer = frame.capturedImage
         self.executeHandTracking(pixelBuffer: pixelBuffer)
-//        frame.camera.
     }
 }
 
@@ -162,6 +159,7 @@ extension CustomARView {
             let axisFlipMatrix = float4x4(col0, col1, col2, col3)
 
             let rotatedPlaneAtPoint = planePosMatrix * camRotMatrix * axisFlipMatrix
+            // 作成したクリッピング平面を元にunproject
             let projectionAtRotatedPlane = unproject(cgPoint, ontoPlane: rotatedPlaneAtPoint) ?? camForwardPoint
             let verticalOffset = cameraTransform.matrix.upVector * offsetFromCamera.y
             let horizontalOffset = cameraTransform.matrix.rightVector * offsetFromCamera.x

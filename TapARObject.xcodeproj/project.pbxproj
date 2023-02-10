@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D3B2DFA7299267BE0027AE43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFA6299267BE0027AE43 /* AppDelegate.swift */; };
 		D3B2DFA9299267BE0027AE43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFA8299267BE0027AE43 /* ContentView.swift */; };
-		D3B2DFAB299267BE0027AE43 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFAA299267BE0027AE43 /* Experience.rcproject */; };
 		D3B2DFAD299267C00027AE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2DFAC299267C00027AE43 /* Assets.xcassets */; };
 		D3B2DFB0299267C00027AE43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2DFAF299267C00027AE43 /* Preview Assets.xcassets */; };
 		D3B2DFB7299268E50027AE43 /* FingerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFB6299268E50027AE43 /* FingerStatus.swift */; };
@@ -25,7 +24,6 @@
 		D3B2DFA3299267BE0027AE43 /* TapARObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapARObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B2DFA6299267BE0027AE43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3B2DFA8299267BE0027AE43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D3B2DFAA299267BE0027AE43 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		D3B2DFAC299267C00027AE43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3B2DFAF299267C00027AE43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3B2DFB6299268E50027AE43 /* FingerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerStatus.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 				D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */,
 				D3B2DFBC2993B8050027AE43 /* SoundManager.swift */,
 				D3B2DFC42993BA740027AE43 /* SoadEntity.swift */,
-				D3B2DFAA299267BE0027AE43 /* Experience.rcproject */,
 				D3B2DFAC299267C00027AE43 /* Assets.xcassets */,
 				D3B2DFAE299267C00027AE43 /* Preview Content */,
 			);
@@ -171,7 +168,6 @@
 				D3B2DFB9299269310027AE43 /* CustumARView.swift in Sources */,
 				D3B2DFA9299267BE0027AE43 /* ContentView.swift in Sources */,
 				D3B2DFA7299267BE0027AE43 /* AppDelegate.swift in Sources */,
-				D3B2DFAB299267BE0027AE43 /* Experience.rcproject in Sources */,
 				D3B2DFBD2993B8050027AE43 /* SoundManager.swift in Sources */,
 				D3B2DFBB299269B30027AE43 /* ARViewContainer.swift in Sources */,
 				D3B2DFC52993BA740027AE43 /* SoadEntity.swift in Sources */,
