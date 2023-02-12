@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3B09F2E2998C6BA00303451 /* simdfloat4×4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B09F2D2998C6BA00303451 /* simdfloat4×4.swift */; };
 		D3B2DFA7299267BE0027AE43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFA6299267BE0027AE43 /* AppDelegate.swift */; };
 		D3B2DFA9299267BE0027AE43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFA8299267BE0027AE43 /* ContentView.swift */; };
 		D3B2DFAD299267C00027AE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B2DFAC299267C00027AE43 /* Assets.xcassets */; };
@@ -18,9 +19,11 @@
 		D3B2DFC02993B9970027AE43 /* MultipeerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D3B2DFBF2993B9970027AE43 /* MultipeerHelper */; };
 		D3B2DFC32993B9B00027AE43 /* RealityGeometries in Frameworks */ = {isa = PBXBuildFile; productRef = D3B2DFC22993B9B00027AE43 /* RealityGeometries */; };
 		D3B2DFC52993BA740027AE43 /* SoadEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B2DFC42993BA740027AE43 /* SoadEntity.swift */; };
+		D3B88FDB29974D0E00059915 /* ARFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B88FDA29974D0E00059915 /* ARFrame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D3B09F2D2998C6BA00303451 /* simdfloat4×4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simdfloat4×4.swift"; sourceTree = "<group>"; };
 		D3B2DFA3299267BE0027AE43 /* TapARObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapARObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B2DFA6299267BE0027AE43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3B2DFA8299267BE0027AE43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 		D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		D3B2DFBC2993B8050027AE43 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D3B2DFC42993BA740027AE43 /* SoadEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoadEntity.swift; sourceTree = "<group>"; };
+		D3B88FDA29974D0E00059915 /* ARFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +72,12 @@
 				D3B2DFA6299267BE0027AE43 /* AppDelegate.swift */,
 				D3B2DFA8299267BE0027AE43 /* ContentView.swift */,
 				D3B2DFB6299268E50027AE43 /* FingerStatus.swift */,
+				D3B09F2D2998C6BA00303451 /* simdfloat4×4.swift */,
 				D3B2DFB8299269310027AE43 /* CustumARView.swift */,
 				D3B2DFBA299269B30027AE43 /* ARViewContainer.swift */,
 				D3B2DFBC2993B8050027AE43 /* SoundManager.swift */,
 				D3B2DFC42993BA740027AE43 /* SoadEntity.swift */,
+				D3B88FDA29974D0E00059915 /* ARFrame.swift */,
 				D3B2DFAC299267C00027AE43 /* Assets.xcassets */,
 				D3B2DFAE299267C00027AE43 /* Preview Content */,
 			);
@@ -170,6 +176,8 @@
 				D3B2DFA7299267BE0027AE43 /* AppDelegate.swift in Sources */,
 				D3B2DFBD2993B8050027AE43 /* SoundManager.swift in Sources */,
 				D3B2DFBB299269B30027AE43 /* ARViewContainer.swift in Sources */,
+				D3B88FDB29974D0E00059915 /* ARFrame.swift in Sources */,
+				D3B09F2E2998C6BA00303451 /* simdfloat4×4.swift in Sources */,
 				D3B2DFC52993BA740027AE43 /* SoadEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
