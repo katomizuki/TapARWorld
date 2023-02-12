@@ -139,7 +139,7 @@ final class CustomARView: ARView {
                 multipeer.sendToAllPeers(data)
                 entity.runWithOwnership { result in
                     switch result {
-                    case .success(let success):
+                    case .success:
                         let originTransform = Transform(scale: .one,
                                                   rotation: .init(),
                                                   translation: .zero)
@@ -159,6 +159,21 @@ final class CustomARView: ARView {
                     }
                 }
             }
+        }
+    }
+    
+    private func world2Data() {
+        session.getCurrentWorldMap { [weak self] worldMap, error in
+            guard let self = self else { return }
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let worldMap = worldMap else { return }
+            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: worldMap,
+                                                               requiringSecureCoding: true)
+            else { return }
+            self.multipeer.sendToAllPeers(data)
         }
     }
 }
@@ -213,10 +228,25 @@ extension CustomARView: MultipeerHelperDelegate {
     }
     
     func receivedData(peerHelper: MultipeerHelper, _ data: Data, _ peer: MCPeerID) {
-        print(peerHelper)
-    }
-    
-    func peerJoined(peerHelper: MultipeerHelper, _ peer: MCPeerID) {
+        do {
+            if let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data) {
+                // Run the session with the received world map.
+                let configuration = ARWorldTrackingConfiguration()
+                configuration.planeDetection = .horizontal
+                configuration.initialWorldMap = worldMap
+                session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+            }
+            else
+            if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARAnchor.self, from: data) {
+                // Add anchor to the session, ARSCNView delegate adds visible content.
+                session.add(anchor: anchor)
+            }
+            else {
+                print("unknown data recieved from \(peer)")
+            }
+        } catch {
+            print("can't decode data recieved from \(peer)")
+        }
         print(peerHelper)
     }
 }
